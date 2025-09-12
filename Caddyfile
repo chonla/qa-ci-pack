@@ -1,0 +1,11 @@
+jenkins.localhost {
+    reverse_proxy :8088
+}
+
+nexus.localhost {
+    reverse_proxy :8888
+}
+
+allure.localhost {
+    reverse_proxy :5252
+}
