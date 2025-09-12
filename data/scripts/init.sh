@@ -402,13 +402,13 @@ JSON
 ensureCache
 
 # Init Jenkins
-# waitForJenkins
-# restartJenkins
-# downloadJenkinsCLI
-# testJenkinsAPIToken
-# installJenkinsPlugins
-# waitForJenkinsPluginsInstalled
-# restartJenkins
+waitForJenkins
+restartJenkins
+downloadJenkinsCLI
+testJenkinsAPIToken
+installJenkinsPlugins
+waitForJenkinsPluginsInstalled
+restartJenkins
 
 # Init Nexus
 waitForNexus
