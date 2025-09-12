@@ -8,4 +8,8 @@ nexus.localhost {
 
 allure.localhost {
     reverse_proxy :5252
+
+    handle_path /api* {
+        reverse_proxy :5050
+    }
 }
