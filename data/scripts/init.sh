@@ -12,6 +12,8 @@ DATA_PATH="./data"
 MOUNTED_PATH="./mounted"
 ASSETS_PATH="${DATA_PATH}/assets"
 TMP_PATH="${DATA_PATH}/tmp"
+JENKINS_HOME_PATH="${MOUNTED_PATH}/jenkins_home"
+JENKINS_INIT_GROOVY_PATH="${JENKINS_HOME_PATH}/init.groovy.d"
 
 JENKINS_BASEURL=http://localhost:8088
 JENKINS_USERNAME=admin
@@ -38,9 +40,20 @@ NEXUS_WILL_BE_REMOVED_REGS=(
     nuget.org
 )
 
+deployJenkinsGroovyScripts() {
+    cp "${ASSETS_PATH}/bypass.groovy" "${JENKINS_INIT_GROOVY_PATH}"
+    cp "${ASSETS_PATH}/generate_token.groovy" "${JENKINS_INIT_GROOVY_PATH}"
+}
+
 ensureCache() {
     [ -d "$TMP_PATH" ] || mkdir -p "$TMP_PATH"
     chmod +w "$TMP_PATH"
+}
+
+ensureJenkinsGroovy() {
+    [ -d "$JENKINS_INIT_GROOVY_PATH" ] || mkdir -p "$JENKINS_INIT_GROOVY_PATH"
+    chmod +w "$JENKINS_INIT_GROOVY_PATH"
+    deployJenkinsGroovyScripts
 }
 
 waitForService() {
@@ -400,6 +413,7 @@ JSON
 
 # Ensure things
 ensureCache
+ensureJenkinsGroovy
 
 # Init Jenkins
 waitForJenkins

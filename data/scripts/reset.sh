@@ -1,15 +1,15 @@
 #/usr/bin/env bash
 
-JENKINS_HOME_DIR="./mounted/jenkins_home"
-INIT_GROOVY_DIR="${JENKINS_HOME_DIR}/init.groovy.d"
-ASSET_DIR="./data/assets"
+JENKINS_HOME_PATH="./mounted/jenkins_home"
+JENKINS_INIT_GROOVY_PATH="${JENKINS_HOME_PATH}/init.groovy.d"
+ASSETS_PATH="./data/assets"
 
 echo "🧹 Cleaning up jenkins_home..."
-rm -rf "${JENKINS_HOME_DIR}"
-mkdir "${JENKINS_HOME_DIR}"
-chmod +w "${JENKINS_HOME_DIR}"
-mkdir "${INIT_GROOVY_DIR}"
+rm -rf "${JENKINS_HOME_PATH}"
+mkdir "${JENKINS_HOME_PATH}"
+chmod +w "${JENKINS_HOME_PATH}"
+mkdir "${JENKINS_INIT_GROOVY_PATH}"
 
 echo "📝 Deploying initial script..."
-cp "${ASSET_DIR}/bypass.groovy" "${INIT_GROOVY_DIR}"
-cp "${ASSET_DIR}/generate_token.groovy" "${INIT_GROOVY_DIR}"
+cp "${ASSETS_PATH}/bypass.groovy" "${JENKINS_INIT_GROOVY_PATH}"
+cp "${ASSETS_PATH}/generate_token.groovy" "${JENKINS_INIT_GROOVY_PATH}"
