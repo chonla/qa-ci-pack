@@ -11,7 +11,7 @@ services:
       - JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
     restart: always
     volumes:
-      - ./mounted/jenkins_home:/var/jenkins_home
+      - ./mounted/jenkins_home:/var/jenkins_home:z
       - /var/run/docker.sock:/var/run/docker.sock
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/login"] # Adjust URL if needed
@@ -47,7 +47,7 @@ services:
       SECURITY_PASS: admin
     ports: ["5050:5050"]
     volumes:
-      - ./data/projects:/app/projects
+      - ./mounted/projects:/app/projects:z
   allure-ui:
     image: frankescobar/allure-docker-service-ui:latest
     container_name: allure-ui
