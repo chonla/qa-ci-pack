@@ -2,11 +2,11 @@
 import groovy.json.JsonOutput
 
 def call(Map a = [:]) {
-  String pattern       = a.pattern       ?: error('pattern is required')
+  String pattern       = a.pattern       ?: '**/**/allure-results/*'
   String projectId     = a.projectId     ?: error('projectId is required')
-  String server        = a.server        ?: (env.ALLURE_API      ?: error('server/ALLURE_API is required'))
-  String user          = a.user          ?: (env.ALLURE_USER     ?: error('user/ALLURE_USER is required'))
-  String password      = a.password      ?: (env.ALLURE_PASSWORD ?: error('password/ALLURE_PASSWORD is required'))
+  String server        = a.server        ?: error('server is required')
+  String user          = a.user          ?: error('user is required')
+  String password      = a.password      ?: error('password is required')
   String executionName = a.executionName ?: "Build #${env.BUILD_NUMBER}"
   String executionFrom = a.executionFrom ?: 'jenkins'
   String executionType = a.executionType ?: 'ci'
