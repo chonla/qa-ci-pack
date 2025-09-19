@@ -39,7 +39,7 @@ services:
     image: frankescobar/allure-docker-service:latest
     container_name: allure-service
     environment:
-      CHECK_RESULTS_EVERY_SECONDS: "NONE"   # CI push mode
+      CHECK_RESULTS_EVERY_SECONDS: "10"
       KEEP_HISTORY: "1"
       KEEP_HISTORY_LATEST: "50"
       SECURITY_ENABLED: 1
